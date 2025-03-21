@@ -13,7 +13,7 @@ public class Main {
         users.add(new Customer());
         users.get(0).setUserName("Alice");
         //Fun Fact! leading an integer with a "0" makes it OCTAL. interesting.
-        users.get(0).setPIN(1115);
+        users.get(0).setPIN(0000);
 
         boolean continueOperations = true;
         int accAccessed;
