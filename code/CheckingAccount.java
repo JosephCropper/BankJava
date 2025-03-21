@@ -4,19 +4,20 @@ public class CheckingAccount implements HasMenu {
     private double balance;
 
     public void CheckingAccount(){
-        balance = 0.0;
+        this.setBalance(0.0);
     }
 
     public void CheckingAccount(double inBalance){
-        balance = inBalance;
+        this.setBalance(inBalance);
     }
 
     public void main(){
+        this.start();
     }
 
     public String menu(){
         Scanner scan = new Scanner(System.in);
-        System.out.println("[==---{ Menu }---==]\n " +
+        System.out.println("[==---{ Account Menu }---==]\n" +
                 "0) exit\n" +
                 "1) check balance\n" +
                 "2) make a deposit\n" +
@@ -43,15 +44,19 @@ public class CheckingAccount implements HasMenu {
                     break;
                 case "1":
                 case "balance":
-                    System.out.println("Your balance is: $" + getBalanceString());
+                    this.checkBalance();
                     break;
                 case "2":
                 case "deposit":
-
-
-
+                    this.makeDeposit();
+                    break;
+                case "3":
+                case "withdrawal":
+                    this.makeWithdrawal();
+                    break;
+                default:
+                    System.err.println("Invalid Entry");
             }
-           //---!--- add break condition
         }
     }
 
@@ -68,20 +73,42 @@ public class CheckingAccount implements HasMenu {
     }
 
     public void checkBalance(){
-
+        System.out.println("Your Balance: $" + getBalanceString());
     }
 
     private double getDouble(){
         Scanner scan = new Scanner(System.in);
+        try{
+            return scan.nextDouble();
+        }
+        catch (Exception e){
+            System.err.println("Incorrect Input Type");
+        }
         return 0.0;
     }
 
     public void makeDeposit(){
-
+        System.out.println("\nDeposit amount:");
+        double inputAmt = this.getDouble();
+        if (inputAmt > 0){
+            balance += inputAmt;
+            System.out.println(inputAmt + " $ added to account\n");
+        }
+        else{
+            System.err.println("Input below or equal to zero");
+        }
     }
 
-    public void makeWithDrawal(){
-
+    public void makeWithdrawal(){
+        System.out.println("\nWithdrawal amount:");
+        double inputAmt = this.getDouble();
+        if (inputAmt > 0){
+            balance -= inputAmt;
+            System.out.println(inputAmt + " $ subtracted from account\n");
+        }
+        else{
+            System.err.println("Input below or equal to zero");
+        }
     }
 
 
