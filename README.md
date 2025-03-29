@@ -23,3 +23,10 @@ User:
 Customer:
   - extends User
   - Holds operations and account data
+
+Admin:
+  - Witholds Ability to calc interest and peek into every account
+
+Bank:
+ - holds Admin account and Customer list
+ - User interface for both Admin class and overall Bank
